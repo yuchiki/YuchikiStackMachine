@@ -1,6 +1,8 @@
 package runner
 
 import (
+	"fmt"
+
 	"github.com/yuchiki/YuchikiStackMachine/pkg/instruction"
 	"github.com/yuchiki/YuchikiStackMachine/pkg/stack"
 )
@@ -45,6 +47,13 @@ func (r *Runner) Step() error {
 		r.Next()
 	case instruction.OpRet:
 		r.isFinished = true
+	case instruction.OpPrintInt:
+		n, err := r.workingStack.Pop()
+		if err != nil {
+			return err
+		}
+		fmt.Println(n)
+		r.Next()
 	default:
 		panic("unknown op")
 	}

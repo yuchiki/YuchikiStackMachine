@@ -10,6 +10,7 @@ const (
 	OpAdd
 	OpPushI
 	OpRet
+	OpPrintInt
 )
 
 func (c OpCode) String() string {
@@ -22,6 +23,8 @@ func (c OpCode) String() string {
 		return "pushI"
 	case OpRet:
 		return "ret"
+	case OpPrintInt:
+		return "printInt"
 	default:
 		return "unknown"
 	}

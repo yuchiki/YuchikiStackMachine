@@ -15,6 +15,13 @@ type Runner struct {
 	isFinished     bool
 }
 
+func NewRunner(code []uint64) *Runner {
+	return &Runner{
+		code:         code,
+		workingStack: stack.NewUint64Stack(),
+	}
+}
+
 func (r *Runner) Run() uint64 {
 	for !r.isFinished {
 		r.Step()
